@@ -5,7 +5,7 @@ if( Dotenv.error ){
     console.error('error parsing environment variables',Dotenv.error.stack);
     process.exit();
 }
-// const ConnectToDb = require('./utils/mongodb-connection');
+const ConnectToDb = require('./utils/mongodb-connection');
 const Express = require('express');
 const Helmet = require('helmet');
 const ExpressRateLimit = require('express-rate-limit');
@@ -15,8 +15,8 @@ const Morgan = require('morgan');
 const BoydParser = require('body-parser');
 const CookieParser = require('cookie-parser');
 
-const PublicRoutes = require('./routes/public-routes');
-const UserRoutes = require('./routes/user-routes');
+const PublicRoutes = require('./routes/public_routes');
+const UserRoutes = require('./routes/user_routes');
 
 const app = Express();
 app.use(

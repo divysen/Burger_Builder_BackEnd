@@ -1,12 +1,9 @@
+'use strict';
+
 const Router = require('express').Router({ strict: true });
+const Controller = require('../controllers/user_controller');
 const Validator = require('express-validator');
 
-Router.get('/',(req,res,next) => {
-    res.json('/ route');
-});
-
-Router.use((req, res, next) => {
-    res.json('/404 not found');
-});
+Router.get('/auth',Controller.auth_controller);
 
 module.exports = Router;
