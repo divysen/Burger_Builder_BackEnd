@@ -40,6 +40,21 @@ class Order{
             return e;
         }
     };
+
+    static async get_orders(email){
+        try{
+            if(DbCon != undefined){
+                const ack = await DbCon.find({'customer.email': email}).toArray();
+                return ack;
+            }
+            else{
+                return 'Database connection lost in OM';
+            }
+        }
+        catch(e){
+            return e;
+        }
+    };
 }
 
 module.exports = Order;

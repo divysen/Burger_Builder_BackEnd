@@ -25,12 +25,12 @@ app.use(
     ExpressRateLimit({windowMs: 1000, max: 100}),
     Timeout('3s'),
     Cors(),
-    BoydParser.json({limit: 5120, type: 'application/json',strict: true}),
+    BoydParser.json({limit: 2048, type: 'application/json',strict: true}),
     CookieParser(),
 
 );
 
-app.use(UserRoutes);
+app.use('/user',UserRoutes);
 app.use(PublicRoutes);
 
 module.exports = app;
