@@ -1,6 +1,8 @@
 'use strict';
 
 const Order_Model = require('../models/order_model');
+const Burger_Model = require('../models/burgerbuilder_model');
+const Burger = require('../models/burgerbuilder_model');
 
 module.exports.public_api_docs = (req, res, next) => {
     res.send(`<pre>
@@ -16,11 +18,10 @@ module.exports.public_api_docs = (req, res, next) => {
     </pre>`);
 };
 
-module.exports.get_ingredient = (req, res, next) => {
+module.exports.get_ingredient = async (req, res, next) => {
+    const ack = await Burger.get_ingredients_list(1);
     res.json({
-        ingredients: {
-            cheese: 0, tomato: 0, salad: 0, onion: 0
-        }
+        data: ack
     });
 };
 

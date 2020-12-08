@@ -4,6 +4,7 @@ const MongoClient = require('mongodb').MongoClient;
 const Db_Url = process.env.MONGODBURL;
 
 const Order_Model = require('../models/order_model');
+const Burger_Model = require('../models/burgerbuilder_model');
 
 MongoClient.connect(Db_Url,{ 
     // autoReconnect: true,
@@ -15,5 +16,6 @@ MongoClient.connect(Db_Url,{
  })
 .then( async client => {
     await Order_Model.inject_db(client);
+    await Burger_Model.inject_db(client);
 })
 .catch( error => console.log('Database connection error', error) );
